@@ -1,3 +1,15 @@
+**Global Disease‐Burden Time-Series Forecast & Anomaly Detection**  
+
+This project builds a **fully pandas-driven**, end-to-end pipeline that transforms raw, multi-country disease-burden data into clear, actionable insights. By ingesting annual death counts for 30 years and 34 disease categories, it reshapes the data into a tidy “long” format, then applies ARIMA(1,1,1) models to each country–disease time series. Whenever observed mortality for a given year falls outside the model’s 95% prediction interval, that year is flagged as an **anomaly**—potentially signaling an outbreak, reporting error, or other epidemiological event.
+
+Key components include:  
+- **Data Wrangling with pandas**: standardized column names, handled missing values, and melted the wide dataset into a one-record-per-country/year/disease structure.  
+- **Automated Time-Series Modeling**: looped through every valid series (per country and disease), fit ARIMA models via `statsmodels`, and merged forecasts and confidence bands back into the DataFrame.  
+- **Anomaly Detection & Reporting**: compared actual vs. forecasted deaths to identify outliers, aggregated all anomalies into a single DataFrame, and exported the results to an Excel report.  
+- **Visualization**: generated polished Matplotlib charts showing actual counts, forecasts, confidence intervals, and red markers for anomalous years—perfect for stakeholder presentations.
+
+By focusing squarely on pandas for data ingestion, transformation, and analysis, this project not only highlights advanced data-wrangling techniques but also demonstrates how to scale time-series modeling across hundreds of series with minimal custom code. The deliverables—a comprehensive anomaly report and intuitive visualizations—make it an ideal showcase for any data-scientist or analyst portfolio.
+
 ```markdown
 # Global Disease-Burden Time-Series Forecast & Anomaly Detection
 
